@@ -1,0 +1,79 @@
+{% include 'base.html.j2' %}
+{% block content %}
+
+<h1>type 1</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Type</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {%set mydata=obj%}
+      {% for i in obj %}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.desc}}</td>
+        <td>{{i.type}}</td>
+        
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+<br>
+<h1>type 2</h1>
+<br>
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th>sno</th>
+        <th>name</th>
+        <th>desc</th>
+        <th>type</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for j in mydata %}
+      <tr>
+        <th>{{loop.index}}</th>
+        <td>{{j.name}}</td>
+        <td>{{j.desc}}</td>
+        <td>{{j.type}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+<br>
+<h1>type 3</h1>
+<br>
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th>sno</th>
+        <th>name</th>
+        <th>desc</th>
+        <th>type</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%set data2 = mydata.filter(type='A')%}
+      {% for j in data2 %}
+      <tr>
+        <th>{{loop.index}}</th>
+        <td>{{j.name}}</td>
+        <td>{{j.desc}}</td>
+        <td>{{j.type}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
